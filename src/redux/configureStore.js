@@ -9,20 +9,32 @@ import requestQueue from "./middleware/requestQueue"
 
 import { reducerName as authReducerName } from "./reducers/core/authentication/actionNames"
 import { reducerName as orderReducerName } from "./reducers/entities/orders/actionNames"
+import { reducerName as tickerReducerName } from "./reducers/entities/tickers/actionNames"
 import createApiClient from "./middleware/apiClient"
 import client from "../configure/client"
 
 import reducers, { history } from "./reducers"
 
-export const saveFirstLoadFilter = createFilter(
+export const saveOrdersFilter = createFilter(
     orderReducerName,
-    ["data", "identifiers"],
+    ["data", "bidIds", "askIds"],
 )
 
-export const loadFirstLoadFilter = createFilter(
-    authReducerName,
+export const loadOrdersFilter = createFilter(
+    orderReducerName,
     null,
-    ["isFirstLoad"],
+    ["data", "bidIds", "askIds"],
+)
+
+export const saveTickersFilter = createFilter(
+    tickerReducerName,
+    ["data"],
+)
+
+export const loadTickersFilter = createFilter(
+    tickerReducerName,
+    null,
+    ["data"],
 )
 
 export const saveAuthFilter = createFilter(
@@ -42,11 +54,14 @@ const storageConfig = {
     storage,
     whitelist: [
         orderReducerName,
+        tickerReducerName,
         authReducerName,
     ],
     transforms: [
-        saveFirstLoadFilter,
-        loadFirstLoadFilter,
+        saveOrdersFilter,
+        loadOrdersFilter,
+        saveTickersFilter,
+        loadTickersFilter,
         saveAuthFilter,
         loadAuthFilter,
     ],
@@ -66,7 +81,7 @@ const configureStore = (initialState = {}) => {
         routerMiddleware(history),
         thunk,
         requestQueue,
-        createApiClient(),
+        createApiClient(client),
     ))
 
     return createStore(usableReducers, initialState, middleware)

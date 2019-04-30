@@ -1,5 +1,3 @@
-import { LOGOUT } from "../reducers/core/authentication/actionNames"
-
 import { LOADING } from "./actions"
 
 import { makeActionBuilder } from "./helpers"
@@ -28,7 +26,7 @@ import subscribe from "./subscriptions"
 //     return preppedRequest
 // }
 
-export const createApiClient = () => store => next => (action) => {
+export const createApiClient = ws => store => next => (action) => {
     const makeAction = makeActionBuilder(action)
     const { callback, subscription } = action
 
@@ -45,7 +43,7 @@ export const createApiClient = () => store => next => (action) => {
         return next(action)
     }
 
-    return subscribe(next, action)
+    return subscribe(ws, next, action)
 }
 
 export default createApiClient
