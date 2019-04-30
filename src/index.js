@@ -3,15 +3,15 @@ import "regenerator-runtime/runtime"
 import React from "react"
 import ReactDOM from "react-dom"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import BrowserRouter from "react-router-dom/BrowserRouter"
+import { ConnectedRouter } from "connected-react-router"
 import Route from "react-router-dom/Route"
 import smoothscroll from "smoothscroll-polyfill"
 
 import registerServiceWorker from "./registerServiceWorker"
 import AppProviderWrapper from "./AppProviderWrapper"
 import App from "./App/index"
-// import pageTracker from "./analytics/pageTracker"
-// import "./analytics/initialize"
+import { history } from "./redux/reducers"
+
 import "./index.css"
 
 smoothscroll.polyfill()
@@ -29,9 +29,9 @@ ReactDOM.render(
         <AppProviderWrapper>
             <div className="App">
                 <CssBaseline />
-                <BrowserRouter>
+                <ConnectedRouter history={history}>
                     <Route component={App} />
-                </BrowserRouter>
+                </ConnectedRouter>
             </div>
         </AppProviderWrapper>
     ),
