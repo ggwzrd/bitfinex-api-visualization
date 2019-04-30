@@ -1,39 +1,39 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
-// import WebSocket from "ws"
-
 import { SUBSCRIBE, CLOSE, LOADED } from "./actions"
 import { makeActionBuilder } from "./helpers"
 
-const subscribe = (next, action) => {
-    const ws = new WebSocket("wss://api-pub.bitfinex.com/ws/2")
+const handleMessage = (next, action) => (result) => {
     const makeAction = makeActionBuilder(action)
+    const { event, ...data } = JSON.parse(result.data)
+
+    if (event === "info") return
+
+    if (event === "subscribed") {
+        next(makeAction(SUBSCRIBE, { result: data, originalPayload: action.payload }))
+        return
+    }
+
+    next(makeAction(
+        LOADED,
+        { result: data, originalPayload: action.payload },
+    ))
+}
+
+const handleClose = (next, action) => () => {
+    const makeAction = makeActionBuilder(action)
+    const payload = { result: "Channel disconnected", originalPayload: action.payload }
+
+    next(makeAction(CLOSE, payload))
+}
+
+const subscribe = (ws, next, action) => {
     const { subscription } = action
+    ws.send(JSON.stringify(subscription))
 
-    ws.onopen = () => {
-        ws.send(JSON.stringify(subscription))
-    }
+    ws.onmessage = handleMessage(next, action)
 
-    ws.onmessage = (result) => {
-        const { event, ...data } = JSON.parse(result.data)
-
-        if (event === "info") return
-
-        if (event === "subscribed") {
-            next(makeAction(SUBSCRIBE, { result: data, originalPayload: action.payload }))
-            return
-        }
-
-        next(makeAction(
-            LOADED,
-            { result: data, originalPayload: action.payload },
-        ))
-    }
-
-    ws.onclose = () => {
-        const payload = { result: "Channel disconnected", originalPayload: action.payload }
-
-        next(makeAction(CLOSE, payload))
-    }
+    ws.onclose = handleClose(next, action)
 }
 
 

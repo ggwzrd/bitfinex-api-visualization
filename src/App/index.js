@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import withStyles from "@material-ui/core/styles/withStyles"
 import Navbar from "../lib/components/Navbar"
 import Book from "./Book"
+import Ticker from "./Ticker"
 
 // import logo from "../logo.svg"
 
@@ -17,6 +18,7 @@ const App = ({ classes }) => (
             // leftIcon={<img src={logo} className={classes.logo} alt="logo" />}
         />
         <Book />
+        <Ticker />
     </div>
 )
 

@@ -1,15 +1,5 @@
-import axios from "axios"
+/* eslint-disable no-undef */
 import constants from "../constants"
 
-export const configureClient = baseURL => axios.create({
-    baseURL,
-    responseType: "json",
-
-    headers: {
-        common: {
-            Accept: "application/json",
-        },
-    },
-})
-
+export const configureClient = baseURL => new WebSocket(baseURL)
 export default configureClient(constants.baseUrl)

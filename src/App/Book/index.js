@@ -21,8 +21,8 @@ const Book = ({
     classes, subscribeOrderBook, isConnected, bids, asks, isLoading,
 }) => {
     useEffect(() => {
-        if (!isConnected) subscribeOrderBook()
-    }, [isConnected])
+        if (!isConnected && !isLoading) subscribeOrderBook()
+    }, [isConnected, isLoading, subscribeOrderBook])
 
     return (
         <Paper className={classes.root}>
