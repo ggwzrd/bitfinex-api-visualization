@@ -11,7 +11,8 @@ import { reducerName as authReducerName } from "./reducers/core/authentication/a
 import { reducerName as orderReducerName } from "./reducers/entities/orders/actionNames"
 import { reducerName as tickerReducerName } from "./reducers/entities/tickers/actionNames"
 import createApiClient from "./middleware/apiClient"
-import client from "../configure/client"
+import constants from "../constants"
+import configureClient from "../configure/client"
 
 import reducers, { history } from "./reducers"
 
@@ -68,6 +69,7 @@ const storageConfig = {
 }
 
 const configureStore = (initialState = {}) => {
+    const client = configureClient(constants.baseUrl)
     const usableReducers = persistCombineReducers(storageConfig, reducers)
 
     const composeWithDevToolsExtension = process.env.REACT_APP_ENV === "dev"

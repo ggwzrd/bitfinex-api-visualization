@@ -1,49 +1,31 @@
 import { LOADING } from "./actions"
 
+import { createFlushQueueAction, createAddRequestAction } from "../reducers/core/requestQueue/actions"
 import { makeActionBuilder } from "./helpers"
 import subscribe from "./subscriptions"
-// export const addTokenToRequest = (state, request) => {
-//     const authToken = "test"
-//     let preppedRequest = authToken
-//         ? {
-//             ...request,
-//             headers: {
-//                 ...request.headers || null,
-//                 Authorization: `Bearer ${authToken}`,
-//             },
-//         }
-//         : request
-
-//     if (process.env.REACT_APP_DIAGNOSTICS === "TRUE") {
-//         preppedRequest = {
-//             ...request,
-//             headers: {
-//                 ...preppedRequest.headers,
-//             },
-//         }
-//     }
-
-//     return preppedRequest
-// }
 
 export const createApiClient = ws => store => next => (action) => {
+    const { dispatch } = store
     const makeAction = makeActionBuilder(action)
-    const { callback, subscription } = action
+    const { subscription } = action
 
-    next(makeAction(LOADING))
+    ws.addEventListener("open", () => {
+        dispatch(createFlushQueueAction())
+    })
 
     if (!action || !subscription) {
-        if (callback) {
-            const { dispatch, getState } = store
-
-            next(action)
-            callback(dispatch, getState, action.payload)
-        }
-
-        return next(action)
+        next(action)
+        return
     }
 
-    return subscribe(ws, next, action)
+    next(makeAction(LOADING, false))
+
+    if (ws.readyState !== ws.OPEN) {
+        dispatch(createAddRequestAction(action))
+        return
+    }
+
+    subscribe(ws, next, action)
 }
 
 export default createApiClient

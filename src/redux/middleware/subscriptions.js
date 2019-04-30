@@ -28,12 +28,11 @@ const handleClose = (next, action) => () => {
 }
 
 const subscribe = (ws, next, action) => {
-    const { subscription } = action
-    ws.send(JSON.stringify(subscription))
+    ws.send(JSON.stringify(action.subscription))
 
-    ws.onmessage = handleMessage(next, action)
+    ws.addEventListener("message", handleMessage(next, action))
 
-    ws.onclose = handleClose(next, action)
+    ws.addEventListener("close", handleClose(next, action))
 }
 
 
