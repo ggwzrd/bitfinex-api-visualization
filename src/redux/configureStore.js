@@ -10,19 +10,18 @@ import requestQueue from "./middleware/requestQueue"
 import { reducerName as authReducerName } from "./reducers/core/authentication/actionNames"
 import { reducerName as orderReducerName } from "./reducers/entities/orders/actionNames"
 import createApiClient from "./middleware/apiClient"
-import client from "../configure/client"
 
 import reducers, { history } from "./reducers"
 
-export const saveFirstLoadFilter = createFilter(
+export const saveOrdersFilter = createFilter(
     orderReducerName,
-    ["data", "identifiers"],
+    ["data", "bidIds", "askIds"],
 )
 
-export const loadFirstLoadFilter = createFilter(
+export const loadOrdersFilter = createFilter(
     authReducerName,
     null,
-    ["isFirstLoad"],
+    ["data", "bidIds", "askIds"],
 )
 
 export const saveAuthFilter = createFilter(
@@ -45,8 +44,8 @@ const storageConfig = {
         authReducerName,
     ],
     transforms: [
-        saveFirstLoadFilter,
-        loadFirstLoadFilter,
+        saveOrdersFilter,
+        loadOrdersFilter,
         saveAuthFilter,
         loadAuthFilter,
     ],
