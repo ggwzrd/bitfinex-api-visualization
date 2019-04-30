@@ -8,24 +8,26 @@ const styles = theme => ({
     },
 
     appbar: {
-        backgroundColor: "transparent",
+        minHeight: get(theme, "customTheme.sizes.appBarHeight"),
+        backgroundColor: "#1b262d",
+        color: "white",
     },
 
     toolbar: {
         width: "100%",
-        maxWidth: get(theme, "appicalTheme.sizes.pagesMaxWidth"),
+        maxWidth: get(theme, "customTheme.sizes.pagesMaxWidth"),
         margin: "0 auto",
-        padding: `0 ${get(theme, "appicalTheme.spacing.smallest")}`,
+        padding: `0 ${get(theme, "customTheme.spacing.smallest")}`,
         justifyContent: "space-between",
 
         [theme.breakpoints.up("sm")]: {
-            minHeight: get(theme, "appicalTheme.sizes.appBarHeight"),
+            minHeight: get(theme, "customTheme.sizes.appBarHeight"),
         },
     },
 
     leftButton: {
-        width: get(theme, "appicalTheme.sizes.iconButtonSize"),
-        height: get(theme, "appicalTheme.sizes.iconButtonSize"),
+        width: get(theme, "customTheme.sizes.iconButtonSize"),
+        height: get(theme, "customTheme.sizes.iconButtonSize"),
         marginLeft: "-12px",
         marginRight: "20px",
     },
@@ -47,7 +49,7 @@ const styles = theme => ({
     },
 
     tabs: {
-        paddingLeft: get(theme, "appicalTheme.spacing.largest"),
+        paddingLeft: get(theme, "customTheme.spacing.largest"),
 
         [theme.breakpoints.down("xs")]: {
             paddingLeft: 0,

@@ -1,3 +1,5 @@
+export const SUBSCRIBE = "_SUBSCRIBE"
 export const LOADING = "_LOADING"
 export const LOADED = "_LOADED"
 export const ERROR = "_ERROR"
+export const CLOSE = "_CLOSE"

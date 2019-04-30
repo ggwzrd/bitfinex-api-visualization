@@ -53,3 +53,6 @@ export function convertToMuiTheme(input) {
         },
     })
 }
+
+
+export default convertToMuiTheme

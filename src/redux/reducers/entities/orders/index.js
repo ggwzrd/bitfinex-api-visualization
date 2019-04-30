@@ -16,9 +16,13 @@ export const selectData = createSelector(
     selectFeature,
     selectors.selectData,
 )
-export const selectIdentifiers = createSelector(
+export const selectBidIds = createSelector(
     selectFeature,
-    selectors.selectIdentifiers,
+    selectors.selectBidIds,
+)
+export const selectAskIds = createSelector(
+    selectFeature,
+    selectors.selectAskIds,
 )
 export const selectSelectedId = createSelector(
     selectFeature,
@@ -28,13 +32,21 @@ export const selectisLoading = createSelector(
     selectFeature,
     selectors.selectIsLoading,
 )
+export const selectIsConnected = createSelector(
+    selectFeature,
+    selectors.selectIsConnected,
+)
 export const selectLoadingError = createSelector(
     selectFeature,
     selectors.selectLoadingError,
 )
-export const selectOrders = createSelector(
+export const selectBids = createSelector(
     selectFeature,
-    selectors.selectOrders,
+    selectors.selectBids,
+)
+export const selectAsks = createSelector(
+    selectFeature,
+    selectors.selectAsks,
 )
 export const selectCurrentOrder = createSelector(
     selectFeature,

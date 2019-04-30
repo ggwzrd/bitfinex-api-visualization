@@ -1,4 +1,14 @@
-import first from "lodash/first"
-import last from "lodash/last"
+import { ORDERS } from "./actionNames"
 
-import { ORDER, ORDERS } from "./actionNames"
+export const createSubscribeAction = (frequency = "F1", precision = "P1") => ({
+    type: ORDERS,
+    subscription: {
+        event: "subscribe",
+        channel: "book",
+        symbol: "tBTCUSD",
+        freq: frequency,
+        prec: precision,
+    },
+})
+
+export const placeholder = ""

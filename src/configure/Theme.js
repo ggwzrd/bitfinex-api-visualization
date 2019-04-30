@@ -11,7 +11,7 @@ export function isValidColorValue(value) {
         : undefined
 }
 
-export const APPICALTHEME = {
+export const customTheme = {
     primary: "rgba(64, 74, 88, 1)",
     contrast: "rgba(255, 108, 92, 1)",
     contrast_text: "rgba(255, 108, 92, 1)",
@@ -20,9 +20,9 @@ export const APPICALTHEME = {
 export const createThemeFromJson = (input) => {
     // fill missing values with defaults
     const theme = {
-        primary: (input.primary && input.primary !== "") ? input.primary : APPICALTHEME.primary,
-        contrast: (input.contrast && input.contrast !== "") ? input.contrast : APPICALTHEME.contrast,
-        contrast_text: (input.contrast_text && input.contrast_text !== "") ? input.contrast_text : APPICALTHEME.contrast_text,
+        primary: (input.primary && input.primary !== "") ? input.primary : customTheme.primary,
+        contrast: (input.contrast && input.contrast !== "") ? input.contrast : customTheme.contrast,
+        contrast_text: (input.contrast_text && input.contrast_text !== "") ? input.contrast_text : customTheme.contrast_text,
     }
 
     return ({

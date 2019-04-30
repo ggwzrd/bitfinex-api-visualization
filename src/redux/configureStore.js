@@ -9,6 +9,8 @@ import requestQueue from "./middleware/requestQueue"
 
 import { reducerName as authReducerName } from "./reducers/core/authentication/actionNames"
 import { reducerName as orderReducerName } from "./reducers/entities/orders/actionNames"
+import createApiClient from "./middleware/apiClient"
+import client from "../configure/client"
 
 import reducers, { history } from "./reducers"
 
@@ -64,7 +66,7 @@ const configureStore = (initialState = {}) => {
         routerMiddleware(history),
         thunk,
         requestQueue,
-        // createApiClient(client),
+        createApiClient(),
     ))
 
     return createStore(usableReducers, initialState, middleware)

@@ -35,7 +35,7 @@ const styles = theme => ({
         display: "block",
         width: "100%",
         height: "100%",
-        backgroundColor: get(theme, "appicalTheme.white"),
+        backgroundColor: get(theme, "customTheme.white"),
         borderRadius: "50%",
     },
 })

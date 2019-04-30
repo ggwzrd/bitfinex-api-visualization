@@ -33,13 +33,11 @@ const renderApp = (AppComponent) => {
     ReactDOM.render(
         (
             <AppProviderWrapper>
-                <div className="App">
-                    <CssBaseline />
+                <CssBaseline />
 
-                    <ConnectedRouter history={history}>
-                        <Route component={AppComponent} />
-                    </ConnectedRouter>
-                </div>
+                <ConnectedRouter history={history}>
+                    <Route component={AppComponent} />
+                </ConnectedRouter>
             </AppProviderWrapper>
         ),
         root,

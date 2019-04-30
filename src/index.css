@@ -1,4 +1,4 @@
-html, body, #root, #root >div, .App {
+html, body, #root {
     height:100%;
     overflow: hidden;
 }
