@@ -16,6 +16,8 @@ import { reducerName as authReducerName } from "./core/authentication/actionName
 // ENTITIES
 import { reducer as ordersReducer } from "./entities/orders"
 import { reducerName as ordersReducerName } from "./entities/orders/actionNames"
+import { reducer as tickersReducer } from "./entities/tickers"
+import { reducerName as tickersReducerName } from "./entities/tickers/actionNames"
 
 export const history = createBrowserHistory()
 
@@ -28,6 +30,6 @@ registry.register("router", connectRouter(history))
 
 // Entity reducers
 registry.register(ordersReducerName, ordersReducer)
-// registry.register(formsReducerName, reduxFormReducer.plugin(formsReducers))
+registry.register(tickersReducerName, tickersReducer)
 
 export default registry.getReducers()

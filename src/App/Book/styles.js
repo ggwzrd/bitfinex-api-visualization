@@ -8,6 +8,7 @@ export default theme => ({
         margin: get(theme, "customTheme.spacing.gap"),
         backgroundColor: "rgb(27, 38, 45)",
         color: "white",
+        overflow: "hidden",
     },
 
     tables: {
@@ -25,6 +26,7 @@ export default theme => ({
     },
 
     row: {
+        maxWidth: "calc(100% / 6)",
         height: "15px",
     },
 
