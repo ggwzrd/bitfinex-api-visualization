@@ -1,18 +1,9 @@
-import get from "lodash/get"
-
-import {
-    selectAuthToken,
-    selectIsRefreshingAuthToken,
-    selectRefreshToken,
-} from "../reducers/core/authentication"
-import { tokenRefresh, logout } from "../reducers/core/authentication/actions"
 import { LOGOUT } from "../reducers/core/authentication/actionNames"
-import { createAddRequestAction } from "../reducers/core/requestQueue/actions"
 
 import { ERROR, LOADED, LOADING } from "./actions"
 
 export const addTokenToRequest = (state, request) => {
-    const authToken = selectAuthToken(state)
+    const authToken = "test"
     let preppedRequest = authToken
         ? {
             ...request,
@@ -55,9 +46,6 @@ export const createApiClient = client => store => next => (action) => {
     }
 
     next(makeAction(LOADING, false))
-    if (selectIsRefreshingAuthToken(store.getState())) {
-        return store.dispatch(createAddRequestAction(action))
-    }
 
     let { request } = action
 
@@ -82,30 +70,6 @@ export const createApiClient = client => store => next => (action) => {
                 next(makeAction(LOADED, {
                     payload: { result: null, originalPayload: action.payload },
                 }))
-            }
-
-            // if the request failed because the session was not found logout straight away
-            if (get(error, "response.data.Type") === "SessionNotFoundException") store.dispatch(logout())
-
-            // if the request failed because of a login issue
-            // (exception type: SessionExpiredException)
-            if (get(error, "response.data.Type") === "SessionExpiredException") {
-                const currentToken = selectAuthToken(store.getState())
-                // It is possible the auth token was updated while this request happened.
-                if (`Bearer ${currentToken}` !== get(request, "headers.Authorization")) {
-                    store.dispatch(action)
-                    return
-                }
-
-                const refreshToken = selectRefreshToken(store.getState())
-
-                // store current request in the queue so we can restart when we have a new token.
-                store.dispatch(createAddRequestAction(action))
-
-                if (!selectIsRefreshingAuthToken(store.getState())) {
-                    // Only request a new token if we're not currently refreshing.
-                    store.dispatch(tokenRefresh(refreshToken))
-                }
             } else {
                 next(makeAction(ERROR, {
                     payload: { result: error, originalPayload: action.payload },

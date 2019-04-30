@@ -5,19 +5,16 @@ import thunk from "redux-thunk"
 import createFilter from "redux-persist-transform-filter"
 import { routerMiddleware } from "connected-react-router"
 
-// import client from "../configure/client"
-
-// import createApiClient from "./middleware/apiClient"
 import requestQueue from "./middleware/requestQueue"
 
 import { reducerName as authReducerName } from "./reducers/core/authentication/actionNames"
-import { reducerName as firstLoadReducerName } from "./reducers/core/firstLoad/actionNames"
+import { reducerName as orderReducerName } from "./reducers/entities/orders/actionNames"
 
 import reducers, { history } from "./reducers"
 
 export const saveFirstLoadFilter = createFilter(
-    firstLoadReducerName,
-    ["isFirstLoad"],
+    orderReducerName,
+    ["data", "identifiers"],
 )
 
 export const loadFirstLoadFilter = createFilter(
@@ -39,11 +36,10 @@ export const loadAuthFilter = createFilter(
 
 
 const storageConfig = {
-    // TODO: Let's set this to something like "appical" or "appical-io"
-    key: "ggporfolio",
+    key: "bav",
     storage,
     whitelist: [
-        firstLoadReducerName,
+        orderReducerName,
         authReducerName,
     ],
     transforms: [
