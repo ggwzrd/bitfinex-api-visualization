@@ -20,6 +20,7 @@ import styles from "./styles"
 const Book = ({
     classes, subscribeOrderBook, isConnected, bids, asks, isLoading,
 }) => {
+    const isConnecting = isLoading && (!bids.length || !asks.length)
     useEffect(() => {
         if (!isConnected && !isLoading) subscribeOrderBook()
     }, [isConnected, isLoading, subscribeOrderBook])
@@ -27,7 +28,7 @@ const Book = ({
     return (
         <Paper className={classes.root}>
             <div className={classes.tables}>
-                {isLoading
+                {isConnecting && bids
                     ? <Loading size={50} />
                     : (
                         <React.Fragment>

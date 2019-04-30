@@ -1,7 +1,7 @@
 import keys from "lodash/keys"
 import { ORDERS } from "./actionNames"
 import { SUBSCRIBE, LOADED, LOADING, ERROR } from "../../../middleware/actions"
-import { selectData } from "./selectors"
+import { selectData, selectAskIds, selectBidIds } from "./selectors"
 import { initializeOrderBook, updateBidAndAsks } from "./helpers"
 
 //  Required variables
@@ -31,10 +31,7 @@ export const reducers = {
         return {
             ...state,
             isConnected: false,
-            isLoading: true,
-            data: {},
-            bidIds: [],
-            askIds: [],
+            isLoading: true,            
         }
     },
 
@@ -48,6 +45,8 @@ export const reducers = {
                 bids: {},
                 asks: {},
             },
+            bidIds: [],
+            askIds: [],
         }
     },
 
