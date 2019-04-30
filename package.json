@@ -1,0 +1,38 @@
+{
+  "name": "react-redux-router-template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "animated": "^0.2.2",
+    "classnames": "^2.2.6",
+    "core-js": "^3.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-icons": "^3.5.0",
+    "react-jss": "^8.6.1",
+    "react-perfect-scrollbar": "^1.4.4",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.0",
+    "react-swipeable-views": "^0.13.1",
+    "react-transition-group": "^2.4.0",
+    "regenerator-runtime": "^0.13.2",
+    "smoothscroll-polyfill": "^0.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

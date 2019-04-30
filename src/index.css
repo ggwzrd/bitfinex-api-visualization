@@ -1,0 +1,9 @@
+html, body, #root, #root >div, .App {
+    height:100%;
+    overflow: hidden;
+}
+
+* {
+    -webkit-overflow-scrolling: touch;
+    backface-visibility: hidden;
+}

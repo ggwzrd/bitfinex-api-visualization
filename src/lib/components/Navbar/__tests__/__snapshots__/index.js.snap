@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> Does not explode 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <WithStyles(Navbar) />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "backFunc": null,
+      "backLink": null,
+      "children": null,
+      "classes": Object {
+        "appbar": "Navbar-appbar-2",
+        "flex": "Navbar-flex-6",
+        "leftButton": "Navbar-leftButton-4",
+        "navigationWrapper": "Navbar-navigationWrapper-1",
+        "tabs": "Navbar-tabs-8",
+        "title": "Navbar-title-5",
+        "toolbar": "Navbar-toolbar-3",
+        "transparent": "Navbar-transparent-7",
+      },
+      "color": "primary",
+      "leftIcon": null,
+      "rightElement": null,
+      "title": null,
+      "transparent": false,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "backFunc": null,
+        "backLink": null,
+        "children": null,
+        "classes": Object {
+          "appbar": "Navbar-appbar-2",
+          "flex": "Navbar-flex-6",
+          "leftButton": "Navbar-leftButton-4",
+          "navigationWrapper": "Navbar-navigationWrapper-1",
+          "tabs": "Navbar-tabs-8",
+          "title": "Navbar-title-5",
+          "toolbar": "Navbar-toolbar-3",
+          "transparent": "Navbar-transparent-7",
+        },
+        "color": "primary",
+        "leftIcon": null,
+        "rightElement": null,
+        "title": null,
+        "transparent": false,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "context": Object {},
+  },
+}
+`;

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Expand /> Does not explode 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Expand />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "className": "",
+      "color": "#000000",
+      "height": 24,
+      "path": <path
+        d="M12,8 L12,7 L17,7 L17,12 L16,12 L16,9 L13,12 L12,11 L15,8 L12,8 Z M12,16 L12,17 L7,17 L7,12 L8,12 L8,15 L11,12 L12,13 L9,16 L12,16 Z"
+/>,
+      "title": "Expand",
+      "width": 24,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "className": "",
+        "color": "#000000",
+        "height": 24,
+        "path": <path
+          d="M12,8 L12,7 L17,7 L17,12 L16,12 L16,9 L13,12 L12,11 L15,8 L12,8 Z M12,16 L12,17 L7,17 L7,12 L8,12 L8,15 L11,12 L12,13 L9,16 L12,16 Z"
+/>,
+        "title": "Expand",
+        "width": 24,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "context": Object {},
+  },
+}
+`;
