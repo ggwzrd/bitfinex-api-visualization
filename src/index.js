@@ -1,9 +1,10 @@
-import "babel-polyfill"
+import "core-js/stable"
+import "regenerator-runtime/runtime"
 import React from "react"
 import ReactDOM from "react-dom"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import BrowserRouter from "react-router-dom/BrowserRouter"
-import Route from "react-router/Route"
+import Route from "react-router-dom/Route"
 import smoothscroll from "smoothscroll-polyfill"
 
 import registerServiceWorker from "./registerServiceWorker"
